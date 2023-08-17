@@ -25,16 +25,13 @@ export class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { contacts: prevContacts } = prevState;
     const { contacts: currentContacts } = this.state;
-    
-      if (prevContacts !== currentContacts) {
-      localStorage.setItem(
-        localStorageKey,
-        JSON.stringify(currentContacts)
-      );
+
+    if (prevContacts !== currentContacts) {
+      localStorage.setItem(localStorageKey, JSON.stringify(currentContacts));
     }
   }
 
-    addContact = newContact => {
+  addContact = newContact => {
     this.state.contacts.find(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     ) === undefined
