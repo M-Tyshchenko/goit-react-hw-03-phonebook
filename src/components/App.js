@@ -23,10 +23,13 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-      if (prevState.contacts !== this.state.contacts) {
+    const { contacts: prevContacts } = prevState;
+    const { contacts: currentContacts } = this.state;
+    
+      if (prevContacts !== currentContacts) {
       localStorage.setItem(
         localStorageKey,
-        JSON.stringify(this.state.contacts)
+        JSON.stringify(currentContacts)
       );
     }
   }
